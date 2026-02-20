@@ -1,0 +1,17 @@
+# Archivo de usuarios para análisis de Microsoft Graph
+# Un usuario por línea (UserPrincipalName o ID)
+# Ejemplo:
+# lesly.villanueva@oechsle.pe
+# juan.perez@oechsle.pe
+# maria.garcia@oechsle.pe
+
+tamia.rincon@indigitalxp.pe
+francisco.torres@indigitalxp.pe
+natalia.delsolar@indigitalxp.pe
+yndira.guevara@indigitalxp.pe
+diana.avila@indigitalxp.pe
+rosario.inga@indigitalxp.pe
+tamia.rincon@indigitalxp.pe
+frida.pachas@indigitalxp.pe
+oscar.quinones@indigitalxp.pe
+isabel.rojas@indigitalxp.pe

@@ -1,0 +1,53 @@
+gcp:
+  project-id: "pe-intercorpretail-cld-001"
+  credentials:
+    oechsle:
+      location: "credentials/data-offline-oechsle.json"
+    promart:
+      location: "credentials/data-offline-promart.json"
+  
+  bigquery:
+    view-name-oe: "prod-oechsle-data-storage-pub.saventasonpremisesoechsle_pe_intercorpretail_cld_001.prod_oechsle_data_storage_priv_raw_oe_bi_trx_cliente_offline"
+    view-name-pr: "prod-promart-data-storage-pub.saventasonpremisespromart_pe_intercorpretail_cld_001.prod_promart_data_storage_priv_raw_hp_bi_trx_cliente_offline"
+    
+  storage:
+    bucket-name: "tu-bucket"
+
+# Firebase Storage Access Testing Configuration
+firebase:
+  storage-access-test:
+    target-bucket: "pe-gcp-customercare-02.appspot.com"
+    # Credenciales expuestas encontradas en el análisis del flujo real
+    exposed-credentials:
+      email: "viv-ldr-web@aria.com"
+      password: "casa1234"
+    # Firebase Web API Key real encontrada en el tráfico
+    web-api-key: "AIzaSyA8pameJ4hr7sAQ3yOYbezTizVfmrhSQUk"
+    # URLs del flujo real
+    identity-toolkit-signin-url: "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword"
+    identity-toolkit-lookup-url: "https://identitytoolkit.googleapis.com/v1/accounts:lookup"
+    storage-base-url: "https://firebasestorage.googleapis.com/v0/b"
+    
+  pubsub:
+    topic-name: "tu-topic"
+    subscription-name: "tu-subscription"
+
+# Microsoft Graph Configuration
+microsoft:
+  graph:
+    tenant-id: "your-tenant-id-here"
+    client-id: "your-client-id-here"
+    client-secret: "your-client-secret-here"
+
+postgresql:
+  url: "jdbc:postgresql://localhost:5432/tu_db"
+  username: "tu_usuario"
+  password: "tu_password"
+
+logging:
+  level:
+    com.gcptest: DEBUG
+    com.google.cloud: INFO
+server:
+  port: 8081
+
