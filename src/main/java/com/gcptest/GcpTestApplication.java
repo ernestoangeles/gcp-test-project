@@ -11,6 +11,7 @@ import com.gcptest.microsoftgraph.dto.GraphAnalysisReport;
 import com.gcptest.microsoftgraph.dto.UserRole;
 import com.gcptest.microsoftgraph.dto.UserStatus;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -21,12 +22,13 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootApplication
-@RequiredArgsConstructor
 public class GcpTestApplication implements CommandLineRunner {
 
-    private final BigQueryService bigQueryService;
+    @Autowired(required = false)
+    private BigQueryService bigQueryService;
 
     public static void main(String[] args) {
         boolean consoleMode = false;
@@ -231,18 +233,26 @@ public class GcpTestApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         System.out.println("=== GCP Test Application Started ===");
+        System.out.println("🚀 Aplicación iniciada correctamente");
+        System.out.println("📋 Los endpoints disponibles son:");
+        System.out.println("   - GET  http://localhost:8081/api/orders/process");
+        System.out.println("   - GET  http://localhost:8081/api/orders/health");
+        System.out.println();
         
-        try {
-            // Test BigQuery connection and data extraction
-            bigQueryService.testConnection();
-            bigQueryService.extractLatest10Records();
-            
-        } catch (Exception e) {
-            System.err.println("Error during execution: " + e.getMessage());
-            e.printStackTrace();
+        if (bigQueryService != null) {
+            try {
+                // Test BigQuery connection and data extraction
+                bigQueryService.testConnection();
+                bigQueryService.extractLatest10Records();
+            } catch (Exception e) {
+                System.err.println("Error durante la ejecución de BigQuery: " + e.getMessage());
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("ℹ️  BigQuery está deshabilitado (gcp.enabled=false)");
         }
         
-        System.out.println("=== Application Finished ===");
+        System.out.println("=== Application Ready ===");
     }
     
     private static void generateFileReport(StorageAccessReport report) {

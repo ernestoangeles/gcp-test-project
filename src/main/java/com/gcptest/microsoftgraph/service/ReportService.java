@@ -18,9 +18,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 @Service
 @Slf4j
+@ConditionalOnProperty(name = "microsoft.graph.enabled", havingValue = "true", matchIfMissing = false)
 public class ReportService {
     
     private static final String REPORTS_DIR = "reports/microsoft-graph/";

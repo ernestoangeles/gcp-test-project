@@ -5,6 +5,7 @@ import com.gcptest.firebasestorage.dto.StorageAccessReport;
 import com.gcptest.firebasestorage.service.FirebaseStorageAccessTestService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,6 +16,7 @@ import java.util.Map;
 @RestController
 @RequestMapping("/api/firebase-storage-access")
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "firebase.storage-access-test.enabled", havingValue = "true", matchIfMissing = false)
 public class FirebaseStorageAccessController {
 
     private final FirebaseStorageAccessTestService storageAccessTestService;

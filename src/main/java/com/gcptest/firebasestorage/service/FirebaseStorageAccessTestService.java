@@ -8,6 +8,7 @@ import com.gcptest.firebasestorage.dto.StorageAccessReport;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.*;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -17,6 +18,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
+@ConditionalOnProperty(name = "firebase.storage-access-test.enabled", havingValue = "true", matchIfMissing = false)
 public class FirebaseStorageAccessTestService {
 
     @Value("${firebase.storage-access-test.target-bucket}")

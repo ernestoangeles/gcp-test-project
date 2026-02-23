@@ -1,4 +1,5 @@
 gcp:
+  enabled: false  # Cambiar a true si necesitas usar GCP
   project-id: "pe-intercorpretail-cld-001"
   credentials:
     oechsle:
@@ -16,6 +17,7 @@ gcp:
 # Firebase Storage Access Testing Configuration
 firebase:
   storage-access-test:
+    enabled: false  # Cambiar a true si necesitas usar Firebase Storage Access Testing
     target-bucket: "pe-gcp-customercare-02.appspot.com"
     # Credenciales expuestas encontradas en el análisis del flujo real
     exposed-credentials:
@@ -31,13 +33,48 @@ firebase:
   pubsub:
     topic-name: "tu-topic"
     subscription-name: "tu-subscription"
+  
+  vulnerability-testing:
+    enabled: false  # Cambiar a true si necesitas usar Vulnerability Testing
 
 # Microsoft Graph Configuration
 microsoft:
   graph:
+    enabled: false  # Cambiar a true si necesitas usar Microsoft Graph
     tenant-id: "your-tenant-id-here"
     client-id: "your-client-id-here"
     client-secret: "your-client-secret-here"
+
+# VTEX Orders Processing Configuration
+vtex:
+  companies:
+    plazavea:
+      company-code: "pvea"
+      base-url: "https://plazavea.vtexcommercestable.com.br"
+      app-token: "USMABCYVYKERMMOCHPCKOKCBQTBTINCILEINVIJVTBIFOSVAOZGQHUPJPKJHAENKHVFIDBHZGGQNBXNYYBFIHMARPZXKYBUPNYXSMNWNSGKADBIRWKJYZECUUOSEDWAE"
+      app-key: "vtexappkey-plazavea-PPVKBZ"
+    promart:
+      company-code: "hpsa"
+      base-url: "https://promart.vtexcommercestable.com.br"
+      app-token: "LCMGIKNSQTEOYJZNAZCCIVIHWLZKUECKEASSJSLLBMDPTZSXBBMMZLDPTEJXLDYMRTKYQGEINQBVSTNWSBITSQLSWDZEIOZYOQYZPUGUXEYIKHXARMEJUFUAIRBNHZZZ"
+      app-key: "vtexappkey-promart-SFYPCG"
+    oechsle:
+      company-code: "tpsa"
+      base-url: "https://oechsle.vtexcommercestable.com.br"
+      app-token: "UVLHOTHALYQTMEEOMBSIQGUAAKDMBHOWRWBMWWIDNLQXIYXECHUFBWDNAKHDPVYDJUBPCRRQSOUFPWSCNYJUNJUVTNMLOFNSNMOOXICKQDMMCYYDSFQRLEQAZGVOEFBM"
+      app-key: "vtexappkey-oechsle-CLSMXG"
+    promartec:
+      company-code: "hpsaec"
+      base-url: "https://promartecuador.vtexcommercestable.com.br"
+      app-token: "OQWYMXMVEQCSPPAVUAUWBEAKOQIEFWTJUWJAVZCFOGCZIVQAGVIEKCBUFIHHNVLALFEOFQQSWCOEHXPGKPYVFPODBGLLZSIDJSBMBMQEWGDSEHGHHGRSRRFKWKUSKRQL"
+      app-key: "vtexappkey-promartecuador-UDLYEA"
+  orders-endpoint: "/api/oms/pvt/orders"
+
+# Payment API Configuration
+payment:
+  api:
+    base-url: "https://payment-prd.cc.cloudintercorpretail.pe"
+    detail-endpoint: "/api/customer-care/v1/payments"
 
 postgresql:
   url: "jdbc:postgresql://localhost:5432/tu_db"
@@ -46,8 +83,9 @@ postgresql:
 
 logging:
   level:
-    com.gcptest: DEBUG
-    com.google.cloud: INFO
+    com.gcptest: WARN
+    com.gcptest.orders: INFO
+    com.google.cloud: WARN
 server:
   port: 8081
 

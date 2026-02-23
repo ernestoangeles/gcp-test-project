@@ -3,10 +3,12 @@ package com.gcptest.service;
 import com.google.cloud.bigquery.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@ConditionalOnProperty(name = "gcp.enabled", havingValue = "true", matchIfMissing = false)
 public class BigQueryService {
     public void extractPromartRecords() {
         try {

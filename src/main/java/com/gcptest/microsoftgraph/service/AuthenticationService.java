@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.concurrent.CompletableFuture;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 
 @Service
 @Slf4j
+@ConditionalOnProperty(name = "microsoft.graph.enabled", havingValue = "true", matchIfMissing = false)
 public class AuthenticationService {
     
     @Value("${microsoft.graph.tenant-id}")

@@ -6,6 +6,7 @@ import com.google.cloud.bigquery.BigQueryOptions;
 import com.google.cloud.storage.Storage;
 import com.google.cloud.storage.StorageOptions;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,6 +14,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 @Configuration
+@ConditionalOnProperty(name = "gcp.enabled", havingValue = "true", matchIfMissing = false)
 public class GcpConfig {
 
     @Value("${gcp.project-id}")
